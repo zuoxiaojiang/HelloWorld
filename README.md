@@ -23,7 +23,7 @@ val query:QueryService = query1
 ```scala
 val S1 = new QueryService("S1",Set(vesseltraj),Set(("speed",NEGA,30)),(5,2))
 ```
-* Create service instances by providing such parameters:`servicename`, `outputattributes`, `dataconstraints`, `timewindow`. For example:<br>
+* Create service instances by providing such parameters:`serviceinstancename`, `outputattributes`, `dataconstraints`, `timewindow`. For example:<br>
 ```scala
 val S2 = new QueryService("S2",Set(vesseltraj,vesselinfo), Set("mmsi", "draught", "speed"),Set(("imo",NEGA,2000)),(5,2))
 ```
@@ -32,17 +32,28 @@ val S2 = new QueryService("S2",Set(vesseltraj,vesselinfo), Set("mmsi", "draught"
 val ucServices = List(S1,S2)
 ```
 ### To set services or service instances by simulating
-* In `DataUtil.scala`, create the relation collection `simulSource` which is used to simulate the service source:<br>
+* In `DataUtil.scala`, create a relation collection `simulSource` which is used to simulate the service source:<br>
 ```scala
 val simulSource:Array[QueryService] = Array[QueryService](Movie,Revenues,Director,vesseltraj,vesseltravelinfo,vesselinfo)
 ```
 * Simulate the service source by giving such parameters:`relationcollection`, `query`, `servicesourcesize`. For example:<br>
 ```scala
-val simuServices:List[QueryService] = SourceSImulation.geneViews(DataUtil.simulSource,query,1000)
+val simulServices:List[QueryService] = SourceSImulation.geneViews(DataUtil.simulSource,query,1000)
 ```
 ### To run the driver program
-* appoint an existing service collection 
-* call the query from DataUtil.scala
-
+* In `BucketServiceComb.scala`, assign the `DataUtil.query` to variable `query` as a user query:<br>
+```scala
+val query = DataUtil.query
+```
+* Appoint an service source which is used to generate rewriting service plans, there are two methods to appoint<br> corresponding to two different scenarios，you can run a use case using the `ucServices` which is create manually:<br>
+```scala
+val services = DataUtil.ucServices
+```
+or you can measure the performance of bucket service composition using the `simulServices`:<br>
+```scala
+val services = DataUtil.simulServices
+```
+* After that you can run the program.
 ### To analysis result
-* user
+* The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
+
