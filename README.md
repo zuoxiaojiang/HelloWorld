@@ -2,6 +2,25 @@
 
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
-'''scala
-val a = new Service()
-'''
+
+### To set underlying relations
+### To set services or service instances
+* create the service 
+* create the service instances
+* load these to a set services
+
+### To set simulating services or service instances
+
+
+### To set user queries
+* create the query as a form as 
+
+### To select a user query 
+* appoint the query which is going to use 
+
+### To run the driver program
+* appoint an existing service collection 
+* call the query from DataUtil.scala
+
+### To analysis result
+* user
