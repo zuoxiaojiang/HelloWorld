@@ -4,6 +4,11 @@
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
 
 ### To set underlying relations
+* Create an underlying relation by providing such parametors to QueryService:'relationname','relationattributes' in 'DataUtil.scala'. For example:<br>
+'''java
+int a = 0;
+'''
+
 ### To set services or service instances
 * create the service 
 * create the service instances
