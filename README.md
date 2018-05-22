@@ -56,4 +56,5 @@ val services = DataUtil.simulServices
 * After that you can run the program.
 ### To analysis result
 * The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
+![Image text](https://raw.githubusercontent.com/zuoxiaojiang/HelloWorld/master/2.1.png)
 
