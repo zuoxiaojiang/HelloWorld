@@ -1,10 +1,10 @@
-# BucketServiceComposition
-
+# ServiceComposition
+* Two approachs of service composition based on the idea of bucket algorithm and Minicon algorithm in traditional data integration.
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
 
 ### To set underlying relations
-* In `DataUtil.scala`, create underlying relations by providing such parametors :`relationname`,`outputattributes`. For example:<br>
+* In `DataUtil.scala`, create underlying relations by providing such parameters :`relationname`,`outputattributes`. For example:<br>
 ```scala
 val vesseltraj = new QueryService("vesseltraj", Set("mmsi","long","lat","speed"))
 ```
@@ -41,6 +41,7 @@ val simulSource:Array[QueryService] = Array[QueryService](Movie,Revenues,Directo
 val simulServices:List[QueryService] = SourceSImulation.geneViews(DataUtil.simulSource,query,1000)
 ```
 ### To run the driver program
+#### BucketServiceComposition
 * In `BucketServiceComb.scala`, assign the `DataUtil.query` to variable `query` as a user query:<br>
 ```scala
 val query = DataUtil.query
@@ -54,7 +55,23 @@ or you can measure the performance of bucket service composition using the `simu
 val services = DataUtil.simulServices
 ```
 * After that you can run the program.
+#### SMinicon
+* In `MiniConServiceComb.scala`, assign the `DataUtil.query` to variable `query` as a user query:<br>
+```scala
+val query = DataUtil.query
+```
+* Appoint an service source which is used to generate rewriting service plans, there are two methods to appoint<br> corresponding to two different scenarios，you can run a use case using the `ucServices` which is create manually:<br>
+```scala
+val S = DataUtil.ucServices
+```
+or you can measure the performance of bucket service composition using the `simulServices`:<br>
+```scala
+val S = DataUtil.simulServices.toSet
+```
+* After that you can run the program.
 ### To analysis result
+#### BucketServiceComposition
 * The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
-![Image text](https://raw.githubusercontent.com/zuoxiaojiang/HelloWorld/master/2.1.png)
 
+#### SMinicon
+* The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
