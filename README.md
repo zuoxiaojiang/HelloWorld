@@ -1,5 +1,8 @@
 # ServiceComposition
 * Two approachs of service composition based on the idea of bucket algorithm and Minicon algorithm in traditional data integration.
+* For running this program, you should perform the following steps：
+* 1 abcd
+* 2 sdf
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
 
