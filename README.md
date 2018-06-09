@@ -6,22 +6,20 @@
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
 
+## Data Preparing
 ### To set underlying relations
 * In `DataUtil.scala`, create underlying relations by providing such parameters :`relationname`,`outputattributes`. For example:<br>
 ```scala
 val vesseltraj = new QueryService("vesseltraj", Set("mmsi","long","lat","speed"))
 ```
-### To set user queries
-* In `DataUtil.scala`, propose queries based on underlying relations by providing such parameters:`queryname`, `queryattributes`, `dataconstraints`, `timewindow`. For example:<br>
+### To set the user query
+* In `DataUtil.scala`, propose queries based on underlying relations by providing such parameters:`queryname`, `queryattributes`, `dataconstraints`, `timewindow`. And then assign one of the queries to the variable query, for example:<br>
 ```scala
 val query1 = new QueryService("Q1", Set(vesselinfo, vesseltraj),Set("mmsi","callsign"),Set(("speed",40,POSI)),(5,4))
-```
-### To select a user query 
-* In `DataUtil.scala`, assigning a value to variable `query` to appoint the query which is going to use:<br>
-```scala
 val query:QueryService = query1
 ```
-### To set services or service instances manually
+### To set the source service collection which is used to generate rewriting services
+#### Setting services or service instances manually (Default)
 * In `DataUtil.scala`, create services by providing such parameters:`servicename`, `dataconstraints`, `timewindow`. For example:<br>
 ```scala
 val S1 = new QueryService("S1",Set(vesseltraj),Set(("speed",NEGA,30)),(5,2))
@@ -34,7 +32,7 @@ val S2 = new QueryService("S2",Set(vesseltraj,vesselinfo), Set("mmsi", "draught"
 ```scala
 val ucServices = List(S1,S2)
 ```
-### To set services or service instances by simulating
+#### Setting services or service instances by simulating
 * In `DataUtil.scala`, create a relation collection `simulSource` which is used to simulate the service source:<br>
 ```scala
 val simulSource:Array[QueryService] = Array[QueryService](Movie,Revenues,Director,vesseltraj,vesseltravelinfo,vesselinfo)
@@ -43,8 +41,9 @@ val simulSource:Array[QueryService] = Array[QueryService](Movie,Revenues,Directo
 ```scala
 val simulServices:List[QueryService] = SourceSImulation.geneViews(DataUtil.simulSource,query,1000)
 ```
-### To run the driver program
-#### BucketServiceComposition
+## Program Driving 
+### Algorithm Selection
+#### BucketServiceComposition (Default)
 * In `BucketServiceComb.scala`, assign the `DataUtil.query` to variable `query` as a user query:<br>
 ```scala
 val query = DataUtil.query
