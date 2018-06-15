@@ -18,6 +18,7 @@ val vesseltraj = new QueryService("vesseltraj", Set("mmsi","long","lat","speed")
 val query1 = new QueryService("Q1", Set(vesselinfo, vesseltraj),Set("mmsi","callsign"),Set(("speed",40,POSI)),(5,4))
 val query:QueryService = query1
 ```
+* * *
 ### To set the source service collection which is used to generate rewriting services
 #### Setting services or service instances manually (Default)
 * In `DataUtil.scala`, create services by providing such parameters:`servicename`, `dataconstraints`, `timewindow`. For example:<br>
