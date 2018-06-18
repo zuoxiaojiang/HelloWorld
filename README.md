@@ -1,8 +1,7 @@
 # ServiceComposition
-* Two approachs of service composition based on the idea of bucket algorithm and Minicon algorithm in traditional data integration.
-* For running this program, you should perform the following steps：
-1. Data Preparing: setting underlying relations、 user queries and source service collection(we choose manual service source as default).
-2. Program Driving: algorithm selection(we select Minicon as default in this doc)、 driven configration、 execution and result analysis.
+* The cross-organization feature of service makes it possible for acting as a data sharing medium, when a user requires to access the data sources across organizations, we could compose data services or data providing services to answer the user query. 
+We proposed a model of continuous query service based on the data stream, and expanded two service composition algorithms(we call them SBucket and SMinicon) based on the ideas of Bucket algorithm and Minicon algorithm which are generally applied in traditional data integration. The aim of our project is to use one of the two algorithms to find executable query rewriting services from services and service instances exposed by system to answer user query.
+
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
 
