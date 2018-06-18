@@ -1,6 +1,9 @@
 # ServiceComposition
 * The cross-organization feature of service makes it possible for acting as a data sharing medium, when a user requires to access the data sources across organizations, we could compose data services or data providing services to answer the user query. 
-We proposed a model of continuous query service based on the data stream, and expanded two service composition algorithms(we call them SBucket and SMinicon) based on the ideas of Bucket algorithm and Minicon algorithm which are generally applied in traditional data integration. The aim of our project is to use one of the two algorithms to find executable query rewriting services from services and service instances exposed by system to answer user query.
+We proposed a model of continuous query service based on the data stream, and expanded two service composition algorithms(we call them SBucket and SMinicon) based on the ideas of Bucket algorithm and Minicon algorithm which are generally applied in traditional data integration. The aim of our project is to use one of the two algorithms to find executable query rewriting services from services and service instances exposed by system to answer user query.<br>
+The main process are the following steps:<br>
+* Atomic Services Setting:
+> Equivalent to the concept of mediation pattern in traditional data integration, and the establishment of user query, continuous query service, and continuous query service instance is based on atomic service.
 
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
