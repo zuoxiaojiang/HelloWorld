@@ -1,4 +1,4 @@
-# ServiceComposition
+# Continuous Query Service Composition
 The cross-organization feature of service makes it possible for acting as a data sharing medium, when a user requires to access the data sources across organizations, we could compose data services or data providing services to answer the user query. 
 We proposed a model of continuous query service based on the data stream, and expanded two service composition algorithms(we call them SBucket and SMinicon) based on the ideas of Bucket algorithm and Minicon algorithm which are generally applied in traditional data integration. The aim of our project is to use one of the two algorithms to find executable query rewriting services from services and service instances exposed by system to answer user query.<br>
 The main process are the following steps:<br>
@@ -12,13 +12,12 @@ The main process are the following steps:<br>
 > After setting the above, what is to do the next is choosing a method to generate rewriting services, SBucket algorithm can be used in SBucket.scala while SMinicon can be used in SMinicon.scala. Then you need to drive the program by appointing the user query, exposing service source in DataUtil.scala.
 * Result Analysis:
 > After executing one of the method, the result will display on console, which includes information about rewriting services, time cost, etc.
-
+The following section we will demonstrate a use case to illustrate how it works.
 ## Setup
 * Download and setup Scala with version of 2.10.6 and JDK with version of 1.7.<br>
-
-## Data Preparing
-### To set underlying relations
-* In `DataUtil.scala`, create underlying relations by providing such parameters :`relationname`,`outputattributes`. For example:<br>
+## Use Case
+### 1 To set atomic services
+* In `DataUtil.scala`, create atomic services by providing such parameters :`relationname`,`outputattributes`. For example:<br>
 ```scala
 val vesseltraj = new QueryService("vesseltraj", Set("mmsi","long","lat","speed"))
 ```
