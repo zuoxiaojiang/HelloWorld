@@ -51,25 +51,25 @@ val services = DataUtil.ucServices
 ```
 * After that you can run the program.
 ### Step 5: To analyse the result
-* The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
+* The result will be displayed on the console, including information about bucket elements, executable service composition collection, and time costs of each phase :<br>
 
-### SMinicon
-* In `MiniConServiceComb.scala`, assign the `DataUtil.query` to variable `query` as a user query:<br>
+
+## Other Scenarios
+### Using exposing service source by simulation
+On the above use case we expose the services and service instances by hand, if we are going to measure the service composition performance, we should using the simulated services and service instances:
+* In `DataUtil.scala`, create a atomic service collection `simulSource` which is used to simulate the service source:<br>
 ```scala
-val query = DataUtil.query
+val simulSource:Array[QueryService] = Array[QueryService](Movie,Revenues,Director,vesseltraj,vesseltravelinfo,vesselinfo)
 ```
-* Appoint an service source which is used to generate rewriting service plans, there are two methods to appoint<br> corresponding to two different scenarios，you can run a use case using the `ucServices` which is create manually:<br>
+* Simulate the service source by giving such parameters:`relationcollection`, `query`, `servicesourcesize`. For example:<br>
 ```scala
-val S = DataUtil.ucServices
+val simulServices:List[QueryService] = SourceSImulation.geneViews(DataUtil.simulSource,query,1000)
 ```
-or you can measure the performance of bucket service composition using the `simulServices`:<br>
+### Using SMinicon algorithm
+Besides the SBucket algorithm used in the above, you can choose SMinicon algorithm which is more efficient by replacing the `SBucket.scala` with `SMinicon.scala` in **Step 4**, in addition, if we wanna to use the simulated sevice source, we need to assign the `Datautil.simulServices` to the variable `service` in **Step 4**:
 ```scala
 val S = DataUtil.simulServices.toSet
 ```
-* After that you can run the program.
-### To analysis result
-#### BucketServiceComposition
-* The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
+and the result display will be a little different from SBucket:
 
-#### SMinicon
-* The result will display in the console, including information about service source simulation、 bucket elements、executable service composition collection、 each phase time costs:<br>
+Note that the bucket elements are invalid, while adding the SMCD information on console.
